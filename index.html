@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mazie — A Puzzle-Maze Game</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d14;
+      --surface: #16161f;
+      --accent: #7c6aff;
+      --accent2: #ff6a9d;
+      --text: #f0eeff;
+      --muted: #8b89a8;
+      --border: #2a2840;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav {
+      width: 100%;
+      max-width: 900px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
+
+    .hero {
+      width: 100%;
+      max-width: 780px;
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 99px;
+      padding: 0.3rem 0.9rem;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 4rem;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.85rem 2rem;
+      border-radius: 12px;
+      transition: opacity 0.2s, transform 0.15s;
+      box-shadow: 0 4px 24px rgba(124,106,255,0.35);
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.85rem 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover { color: var(--text); border-color: var(--accent); }
+    .btn-secondary svg { flex-shrink: 0; }
+
+    .media-wrap {
+      width: 100%;
+      max-width: 780px;
+      padding: 0 2rem 5rem;
+    }
+    .media-frame {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .media-frame img,
+    .media-frame video,
+    .media-frame iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+    .media-placeholder {
+      text-align: center;
+      color: var(--muted);
+    }
+    .media-placeholder p { margin-top: 0.5rem; font-size: 0.85rem; }
+
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="logo">Mazie</span>
+    <a class="nav-link" href="#waitlist">iOS Beta</a>
+  </nav>
+
+  <section class="hero">
+    <span class="eyebrow">iOS Beta &#8212; Coming Soon</span>
+
+    <h1>Help Mazie put themselves back together.</h1>
+
+    <p class="sub">
+      A puzzle-maze game about a little cube exploring shattered maze faces,
+      collecting fragments, and unlocking new ways to move.
+    </p>
+
+    <div class="btn-group" id="waitlist">
+      <!-- TODO: Replace YOUR_TALLY_FORM_ID with your real Tally form ID after publishing -->
+      <a class="btn-primary" href="https://tally.so/r/YOUR_TALLY_FORM_ID" target="_blank" rel="noopener">
+        Join the iOS beta waitlist
+      </a>
+      <!-- TODO: Replace href="#devlog" with your devlog URL (YouTube, Vimeo, blog post, etc.) -->
+      <a class="btn-secondary" href="#devlog">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>
+        </svg>
+        Watch the devlog
+      </a>
+    </div>
+  </section>
+
+  <!-- DEVELOPMENT MEDIA                                                          -->
+  <!-- Replace the placeholder block below with ONE of these options:            -->
+  <!--   Option A (GIF/screenshot): <img src="preview.gif" alt="Mazie gameplay" /> -->
+  <!--   Option B (video):          <video src="clip.mp4" autoplay loop muted playsinline></video> -->
+  <!--   Option C (YouTube):        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Mazie devlog" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+  <div class="media-wrap" id="devlog">
+    <div class="media-frame">
+      <div class="media-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7c6aff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="4"/><polygon points="10 8 16 12 10 16 10 8"/>
+        </svg>
+        <p>Drop your GIF, screenshot, or video here.<br>See the HTML comments above to swap it in.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Mazie. All rights reserved.
+  </footer>
+
+</body>
+</html>
